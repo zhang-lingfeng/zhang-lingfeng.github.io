@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-One paper was accepted by ***ECCV 2024 (CCF-B)***.
+One paper was accepted by **_ECCV 2024 (CCF-B)_**.

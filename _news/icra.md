@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-One paper was accepted by ***ICRA 2025 (CCF-B)***.
+One paper was accepted by **_ICRA 2025 (CCF-B)_**.

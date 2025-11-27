@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Two papers were accepted by ***ACM MM 2025 (CCF-A)***.
+Two papers were accepted by **_ACM MM 2025 (CCF-A)_**.

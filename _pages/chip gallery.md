@@ -13,7 +13,9 @@ A showcase of my custom chip prototypes.
 Click each link to explore publications, data, or design details.
 
 ---
+
 Waiting...
+
 <!-- no show now -->
 <div class="row">
   <div class="col-sm-6 col-md-4">
@@ -37,4 +39,3 @@ Waiting...
   </div>
 </div>
 <!-- no show now -->
-

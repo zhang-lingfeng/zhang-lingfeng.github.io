@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-One paper was accepted by ***IROS 2024 (CCF-C)***.
+One paper was accepted by **_IROS 2024 (CCF-C)_**.

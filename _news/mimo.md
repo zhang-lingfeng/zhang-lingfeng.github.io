@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Groundbreaking Announcement! The ***MiMo-Embodied: X-Embodied Foundation Model Technical Report*** is now available!
+Groundbreaking Announcement! The **_MiMo-Embodied: X-Embodied Foundation Model Technical Report_** is now available!

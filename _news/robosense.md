@@ -6,5 +6,3 @@ related_posts: false
 ---
 
 Our team achieved excellent results at the **IROS 2025 RoboSense Challenge**, placing <span style="background-color: #FFEB3B; font-weight: bold; font-style: italic; color: #D32F2F;">second</span> in Track #2: Social Navigation and <span style="background-color: #FFEB3B; font-weight: bold; font-style: italic; color: #D32F2F;">third</span> in Track #4: Cross-Modal Drone Navigation!
-
-
