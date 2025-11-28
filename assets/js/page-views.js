@@ -3,31 +3,31 @@
  * Tracks total views and today's views
  */
 
-(function() {
-  'use strict';
+(function () {
+  "use strict";
 
   // Get today's date string (YYYY-MM-DD)
   function getTodayString() {
     const today = new Date();
-    return today.toISOString().split('T')[0];
+    return today.toISOString().split("T")[0];
   }
 
   // Initialize or get views data
   function getViewsData() {
-    const data = localStorage.getItem('pageViewsData');
+    const data = localStorage.getItem("pageViewsData");
     if (data) {
       return JSON.parse(data);
     }
     return {
       total: 0,
       lastDate: null,
-      today: 0
+      today: 0,
     };
   }
 
   // Save views data
   function saveViewsData(data) {
-    localStorage.setItem('pageViewsData', JSON.stringify(data));
+    localStorage.setItem("pageViewsData", JSON.stringify(data));
   }
 
   // Update page views
@@ -54,8 +54,8 @@
 
   // Update the display
   function updateDisplay(data) {
-    const totalViewsEl = document.getElementById('total-views');
-    const todayViewsEl = document.getElementById('today-views');
+    const totalViewsEl = document.getElementById("total-views");
+    const todayViewsEl = document.getElementById("today-views");
 
     if (totalViewsEl) {
       totalViewsEl.textContent = formatNumber(data.total);
@@ -67,7 +67,7 @@
 
   // Format number with thousand separators
   function formatNumber(num) {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   // Initialize on page load
@@ -90,10 +90,9 @@
   }
 
   // Run when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
   } else {
     init();
   }
 })();
-
