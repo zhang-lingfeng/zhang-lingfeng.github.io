@@ -265,4 +265,4 @@ Our research in embodied intelligence focuses on:
 
 ---
 
-*For more details about specific projects or collaboration opportunities, please [contact me](mailto:lfzhang715@gmail.com) or visit the [Publications](/publications/) page.*
+_For more details about specific projects or collaboration opportunities, please [contact me](mailto:lfzhang715@gmail.com) or visit the [Publications](/publications/) page._
