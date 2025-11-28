@@ -34,3 +34,5 @@ My research interests include:
 - Vision-Language-Action (VLA) Model
 
 <span style="background-color: #FFEB3B; font-weight: bold; font-style: italic; color:#2196F3;">I am always open to discussions and collaborations — feel free to [reach out](mailto:lfzhang715@gmail.com)!</span>
+
+{% include page_views.liquid %}
