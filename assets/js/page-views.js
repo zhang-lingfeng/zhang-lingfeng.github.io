@@ -1,10 +1,18 @@
 /**
- * Simple page views counter using localStorage
- * Tracks total views and today's views
+ * Page views counter with API synchronization support
+ * Supports JSONBin.io for cross-device synchronization
+ * Falls back to localStorage if API is not configured
  */
 
 (function () {
   "use strict";
+
+  const config = window.pageViewsConfig || {
+    apiEnabled: false,
+    service: "local",
+    jsonbinBinId: "",
+    jsonbinApiKey: "",
+  };
 
   // Get today's date string (YYYY-MM-DD)
   function getTodayString() {
@@ -12,12 +20,8 @@
     return today.toISOString().split("T")[0];
   }
 
-  // Initialize or get views data
-  function getViewsData() {
-    const data = localStorage.getItem("pageViewsData");
-    if (data) {
-      return JSON.parse(data);
-    }
+  // Default data structure
+  function getDefaultData() {
     return {
       total: 0,
       lastDate: null,
@@ -25,14 +29,115 @@
     };
   }
 
-  // Save views data
-  function saveViewsData(data) {
+  // ========== LocalStorage Methods ==========
+  function getLocalData() {
+    const data = localStorage.getItem("pageViewsData");
+    if (data) {
+      return JSON.parse(data);
+    }
+    return getDefaultData();
+  }
+
+  function saveLocalData(data) {
     localStorage.setItem("pageViewsData", JSON.stringify(data));
   }
 
-  // Update page views
-  function updateViews() {
-    const data = getViewsData();
+  // ========== JSONBin.io API Methods ==========
+  async function fetchFromJSONBin() {
+    if (!config.jsonbinBinId) {
+      return null;
+    }
+
+    try {
+      const url = `https://api.jsonbin.io/v3/b/${config.jsonbinBinId}/latest`;
+      const headers = {
+        "Content-Type": "application/json",
+      };
+
+      if (config.jsonbinApiKey) {
+        headers["X-Master-Key"] = config.jsonbinApiKey;
+      }
+
+      const response = await fetch(url, {
+        method: "GET",
+        headers: headers,
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      return result.record || getDefaultData();
+    } catch (error) {
+      console.warn("Failed to fetch from JSONBin.io:", error);
+      return null;
+    }
+  }
+
+  async function saveToJSONBin(data) {
+    if (!config.jsonbinBinId) {
+      return false;
+    }
+
+    try {
+      const url = `https://api.jsonbin.io/v3/b/${config.jsonbinBinId}`;
+      const headers = {
+        "Content-Type": "application/json",
+      };
+
+      if (config.jsonbinApiKey) {
+        headers["X-Master-Key"] = config.jsonbinApiKey;
+      } else {
+        // For public bins, use versioning
+        headers["X-Bin-Versioning"] = "false";
+      }
+
+      const response = await fetch(url, {
+        method: "PUT",
+        headers: headers,
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return true;
+    } catch (error) {
+      console.warn("Failed to save to JSONBin.io:", error);
+      return false;
+    }
+  }
+
+  // ========== Unified Data Methods ==========
+  async function getViewsData() {
+    if (config.apiEnabled && config.service === "jsonbin") {
+      const apiData = await fetchFromJSONBin();
+      if (apiData) {
+        // Also cache locally for faster access
+        saveLocalData(apiData);
+        return apiData;
+      }
+      // Fallback to local if API fails
+      return getLocalData();
+    }
+    return getLocalData();
+  }
+
+  async function saveViewsData(data) {
+    // Always save locally for caching
+    saveLocalData(data);
+
+    // Save to API if enabled
+    if (config.apiEnabled && config.service === "jsonbin") {
+      await saveToJSONBin(data);
+    }
+  }
+
+  // ========== Update Logic ==========
+  async function updateViews() {
+    const data = await getViewsData();
     const today = getTodayString();
 
     // If it's a new day, reset today's counter
@@ -46,7 +151,7 @@
     data.today += 1;
 
     // Save updated data
-    saveViewsData(data);
+    await saveViewsData(data);
 
     // Update display
     updateDisplay(data);
@@ -71,22 +176,24 @@
   }
 
   // Initialize on page load
-  function init() {
-    const data = getViewsData();
+  async function init() {
+    const data = await getViewsData();
     const today = getTodayString();
 
     // Check if we need to reset today's counter
     if (data.lastDate !== today) {
       data.today = 0;
       data.lastDate = today;
-      saveViewsData(data);
+      await saveViewsData(data);
     }
 
     // Update display first
     updateDisplay(data);
 
-    // Then increment and update
-    updateViews();
+    // Then increment and update (with a small delay to avoid race conditions)
+    setTimeout(async () => {
+      await updateViews();
+    }, 500);
   }
 
   // Run when DOM is ready

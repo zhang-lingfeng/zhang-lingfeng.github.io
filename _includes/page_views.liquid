@@ -12,4 +12,13 @@
   </div>
 </div>
 
+<script>
+  // Pass configuration to JavaScript
+  window.pageViewsConfig = {
+    apiEnabled: {% if site.page_views_api.enabled %}true{% else %}false{% endif %},
+    service: "{{ site.page_views_api.service | default: 'local' }}",
+    jsonbinBinId: "{{ site.page_views_api.jsonbin_bin_id | default: '' }}",
+    jsonbinApiKey: "{{ site.page_views_api.jsonbin_api_key | default: '' }}",
+  };
+</script>
 <script src="{{ '/assets/js/page-views.js' | relative_url }}"></script>

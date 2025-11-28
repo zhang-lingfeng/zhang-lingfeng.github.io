@@ -74,6 +74,15 @@ cronitor_analytics: # cronitor RUM analytics site ID (format: XXXXXXXXX)
 pirsch_analytics: # your Pirsch analytics site ID (length 32 characters)
 openpanel_analytics: # your Openpanel analytics client ID (format: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX)
 
+# Page Views Counter API
+# For JSONBin.io: Create a free account at https://jsonbin.io/, create a bin, and copy the bin ID here
+# Leave empty to use localStorage (local only, not synced across devices)
+page_views_api:
+  enabled: true # set to true to enable API-based syncing
+  service: jsonbin # options: jsonbin, github_gist
+  jsonbin_bin_id: 69292e38d0ea881f40050033 # your JSONBin.io bin ID (format: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
+  jsonbin_api_key: # optional: your JSONBin.io API key for private bins (get from https://jsonbin.io/app/account/api-keys)
+
 # For Google Search Console, see https://support.google.com/webmasters/answer/9008080?hl=en#meta_tag_verification&zippy=%2Chtml-tag
 google_site_verification: # your google-site-verification ID (Google Search Console)
 bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
