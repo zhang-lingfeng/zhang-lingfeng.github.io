@@ -1417,56 +1417,88 @@ figure.cover {
 /* Page Views Counter */
 .page-views-counter {
   display: flex;
-  gap: 2rem;
-  margin: 2rem 0;
-  padding: 1.5rem;
-  background: var(--global-bg-color);
-  border: 1px solid var(--global-divider-color);
-  border-radius: 8px;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding: 0;
 }
 
 .page-views-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
   color: var(--global-text-color);
+  transition: opacity 0.2s ease;
+}
+
+.page-views-item:hover {
+  opacity: 0.9;
+}
+
+.page-views-item.today-views {
+  background: rgba(33, 150, 243, 0.1);
+  border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+.page-views-item.total-views {
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
 }
 
 .page-views-item i {
-  color: var(--global-theme-color);
   font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.page-views-item.today-views i {
+  color: #2196f3;
+}
+
+.page-views-item.total-views i {
+  color: #4caf50;
 }
 
 .page-views-label {
-  font-size: 0.9rem;
-  opacity: 0.8;
+  font-size: 0.85rem;
+  flex: 1;
+  white-space: nowrap;
 }
 
 .page-views-value {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--global-theme-color);
-  min-width: 3rem;
+  min-width: 2.5rem;
   text-align: right;
+  flex-shrink: 0;
+}
+
+.page-views-item.today-views .page-views-value {
+  color: #2196f3;
+}
+
+.page-views-item.total-views .page-views-value {
+  color: #4caf50;
 }
 
 @media (max-width: 576px) {
   .page-views-counter {
-    gap: 1.5rem;
-    padding: 1rem;
+    gap: 0.5rem;
+    margin-top: 1rem;
   }
 
   .page-views-item {
-    flex-direction: column;
-    gap: 0.25rem;
-    text-align: center;
+    padding: 0.6rem 0.8rem;
+    gap: 0.5rem;
+  }
+
+  .page-views-label {
+    font-size: 0.8rem;
   }
 
   .page-views-value {
-    min-width: auto;
-    text-align: center;
+    font-size: 1rem;
+    min-width: 2rem;
   }
 }
