@@ -23,12 +23,12 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "nav-chip-gallery",
-          title: "Chip Gallery",
-          description: "A collection of custom chips prototypes.",
+        },{id: "nav-research-gallery",
+          title: "Research Gallery",
+          description: "A showcase of embodied intelligence research projects.",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/chip-gallery/";
+            window.location.href = "/research-gallery/";
           },
         },{id: "nav-teaching",
           title: "Teaching",
