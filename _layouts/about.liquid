@@ -81,5 +81,12 @@ layout: default
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
       {% include newsletter.liquid center=true %}
     {% endif %}
+
+    <!-- Visitor Map Bottom -->
+    {% if page.profile.show_page_views %}
+      <div class="visitor-map-bottom">
+        {% include visitor_map_bottom.liquid %}
+      </div>
+    {% endif %}
   </article>
 </div>

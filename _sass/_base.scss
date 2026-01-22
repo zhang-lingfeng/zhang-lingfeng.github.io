@@ -1503,10 +1503,12 @@ figure.cover {
   }
 }
 
-// Visitor Map Container
+// Visitor Map Container (under profile image - smaller)
 .visitor-map-container {
-  width: 100%;
+  width: 66.67%; // Shrink by one third (2/3 of original size)
   margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
   overflow: hidden;
   border-radius: 6px;
   position: relative;
@@ -1552,7 +1554,37 @@ figure.cover {
 
 @media (min-width: 576px) {
   .visitor-map-container {
-    // Match profile image width on desktop (30% of container)
+    // Match profile image width on desktop (30% of container), but smaller
+    width: 66.67%;
+  }
+}
+
+// Visitor Map Bottom (at page bottom)
+.visitor-map-bottom {
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 6px;
+
+  // ClustrMaps map_v2 container
+  #clustrmaps {
+    display: inline-block;
+  }
+
+  // ClustrMaps script generated content
+  > div,
+  > script + div {
     width: 100%;
+    max-width: 100%;
+    display: inline-block;
+
+    iframe {
+      width: 100% !important;
+      max-width: 100%;
+      border: none;
+      border-radius: 6px;
+    }
   }
 }
