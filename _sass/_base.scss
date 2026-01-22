@@ -192,6 +192,15 @@ ul.task-list input[type="checkbox"] {
 
 // Profile
 
+// Clearfix utility
+.clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
 .profile {
   width: 100%;
 
