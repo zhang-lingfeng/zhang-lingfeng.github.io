@@ -1502,3 +1502,57 @@ figure.cover {
     min-width: 2rem;
   }
 }
+
+// Visitor Map Container
+.visitor-map-container {
+  width: 100%;
+  margin-top: 1.5rem;
+  overflow: hidden;
+  border-radius: 6px;
+  position: relative;
+
+  // ClustrMaps globe container
+  #clstr_globe {
+    width: 100% !important;
+    max-width: 100%;
+    display: block;
+
+    // ClustrMaps iframe
+    iframe {
+      width: 100% !important;
+      height: 100% !important;
+      aspect-ratio: 1 / 1;
+      border: none;
+      border-radius: 6px;
+      display: block;
+    }
+  }
+
+  // ClustrMaps script generated content (fallback)
+  > div,
+  > script + div {
+    width: 100% !important;
+    max-width: 100%;
+    position: relative;
+    padding-bottom: 100%; // Maintain square aspect ratio
+    height: 0;
+    overflow: hidden;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      border: none;
+      border-radius: 6px;
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .visitor-map-container {
+    // Match profile image width on desktop (30% of container)
+    width: 100%;
+  }
+}
