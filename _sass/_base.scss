@@ -1515,7 +1515,8 @@ figure.cover {
 // Visitor Map Container (under profile image - smaller)
 .visitor-map-container {
   width: 66.67%; // Shrink by one third (2/3 of original size)
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
