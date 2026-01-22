@@ -35,9 +35,6 @@ layout: default
         {% if page.profile.more_info %}
           <div class="more-info">{{ page.profile.more_info }}</div>
         {% endif %}
-        {% if page.profile.show_page_views %}
-          {% include page_views.liquid %}
-        {% endif %}
       </div>
     {% endif %}
 
@@ -78,6 +75,11 @@ layout: default
 
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
       {% include newsletter.liquid center=true %}
+    {% endif %}
+
+    <!-- Visitor Map -->
+    {% if page.profile.show_page_views %}
+      {% include page_views.liquid %}
     {% endif %}
   </article>
 </div>

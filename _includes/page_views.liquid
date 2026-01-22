@@ -1,24 +1,2 @@
-<!-- Page Views Counter -->
-<div class="page-views-counter">
-  <div class="page-views-item today-views">
-    <i class="fa-solid fa-calendar-day"></i>
-    <span class="page-views-label">Today Visitors</span>
-    <span class="page-views-value" id="today-views">-</span>
-  </div>
-  <div class="page-views-item total-views">
-    <i class="fa-solid fa-eye"></i>
-    <span class="page-views-label">Total Visitors</span>
-    <span class="page-views-value" id="total-views">-</span>
-  </div>
-</div>
-
-<script>
-  // Pass configuration to JavaScript
-  window.pageViewsConfig = {
-    apiEnabled: {% if site.page_views_api.enabled %}true{% else %}false{% endif %},
-    service: "{{ site.page_views_api.service | default: 'local' }}",
-    jsonbinBinId: "{{ site.page_views_api.jsonbin_bin_id | default: '' }}",
-    jsonbinApiKey: "{{ site.page_views_api.jsonbin_api_key | default: '' }}",
-  };
-</script>
-<script src="{{ '/assets/js/page-views.js' | relative_url }}"></script>
+<!-- Visitor Map -->
+<script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=xPJuZpcL_UB5B7o0hHDHIZmlLsO3cXw-kjzxUUE0Ji4&cl=ffffff&w=a"></script>
