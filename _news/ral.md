@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-One paper was accepted by **_RAL 2025_**.
+One paper was accepted by **_RAL 2025 (CAS Q2-Top)_**.
