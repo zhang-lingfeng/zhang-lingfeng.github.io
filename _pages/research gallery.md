@@ -68,9 +68,81 @@ Click each project to explore publications, code repositories, and detailed info
 
 ---
 
+## 🌍 World Models
+
+<div class="row mt-4">
+  <div class="col-sm-6 col-md-4 mb-4">
+    <div class="card shadow-sm h-100 hoverable">
+      {% include figure.liquid loading="eager" path="assets/img/publication_preview/oa-wam.png" title="OA-WAM" class="card-img-top" %}
+      <div class="card-body">
+        <h5 class="card-title">OA-WAM</h5>
+        <p class="card-text">
+          <span class="badge badge-secondary">Preprint</span>
+          <span class="badge badge-success">2026</span>
+        </p>
+        <p class="card-text">
+          Object-Addressable World Action Model for robust robot manipulation with stable object-level world states.
+        </p>
+        <div class="row ml-1 mr-1 p-0">
+          <a href="https://arxiv.org/abs/2605.06481" target="_blank" class="btn btn-sm btn-primary mr-2">
+            <i class="fa-solid fa-file-pdf"></i> Paper
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-4 mb-4">
+    <div class="card shadow-sm h-100 hoverable">
+      {% include figure.liquid loading="eager" path="assets/img/publication_preview/thinking_in_text.png" title="Thinking in Text and Images" class="card-img-top" %}
+      <div class="card-body">
+        <h5 class="card-title">Thinking in Text and Images</h5>
+        <p class="card-text">
+          <span class="badge badge-secondary">Preprint</span>
+          <span class="badge badge-success">2026</span>
+        </p>
+        <p class="card-text">
+          Interleaved vision-language reasoning traces for long-horizon robot manipulation with explicit semantic-geometric plans.
+        </p>
+        <div class="row ml-1 mr-1 p-0">
+          <a href="https://arxiv.org/abs/2605.00438" target="_blank" class="btn btn-sm btn-primary mr-2">
+            <i class="fa-solid fa-file-pdf"></i> Paper
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
 ## 🗺️ Embodied Navigation
 
 <div class="row mt-4">
+  <div class="col-sm-6 col-md-4 mb-4">
+    <div class="card shadow-sm h-100 hoverable">
+      {% include figure.liquid loading="eager" path="assets/img/publication_preview/walk_with_me.png" title="Walk With Me" class="card-img-top" %}
+      <div class="card-body">
+        <h5 class="card-title">Walk With Me</h5>
+        <p class="card-text">
+          <span class="badge badge-secondary">Preprint</span>
+          <span class="badge badge-success">2026</span>
+        </p>
+        <p class="card-text">
+          Long-horizon social navigation for human-centric outdoor assistance, including blind guidance and last-mile delivery.
+        </p>
+        <div class="row ml-1 mr-1 p-0">
+          <a href="https://arxiv.org/abs/2604.26839" target="_blank" class="btn btn-sm btn-primary mr-2">
+            <i class="fa-solid fa-file-pdf"></i> Paper
+          </a>
+          <a href="https://linglingxiansen.github.io/Walk-with-Me/" target="_blank" class="btn btn-sm btn-outline-secondary">
+            <i class="fa-solid fa-globe"></i> Website
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="col-sm-6 col-md-4 mb-4">
     <div class="card shadow-sm h-100 hoverable">
       {% include figure.liquid loading="eager" path="assets/img/publication_preview/nava.png" title="NavA³" class="card-img-top" %}
