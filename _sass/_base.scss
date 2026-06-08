@@ -1578,12 +1578,12 @@ figure.cover {
   overflow: hidden;
   border-radius: 6px;
 
-  // ClustrMaps map_v2 container
-  #clustrmaps {
+  // MapMyVisitors map container
+  #mapmyvisitors {
     display: inline-block;
   }
 
-  // ClustrMaps script generated content
+  // MapMyVisitors script generated content
   > div,
   > script + div {
     width: 100%;
