@@ -825,6 +825,36 @@ body.fixed-top-nav {
   }
 }
 
+.cl-timeline-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+// Institution logos sit on a white tile (so they read on both themes).
+// Fixed height, width follows the logo: round emblems stay square,
+// wide wordmarks grow sideways.
+.cl-timeline-logo {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  max-width: 100%;
+  height: 60px;
+  padding: 6px;
+  border: 1px solid var(--cl-border);
+  border-radius: 12px;
+  background: $white-color;
+
+  img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
 .cl-timeline-period {
   margin: 0;
   font-family: $font-serif;

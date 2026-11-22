@@ -85,7 +85,14 @@ layout: default
       <div class="cl-timeline">
         {% for item in page.timeline %}
           <article class="cl-timeline-item{% if item.current %} is-current{% endif %}">
-            <p class="cl-timeline-period">{{ item.period }}</p>
+            <div class="cl-timeline-top">
+              {% if item.logo %}
+                <span class="cl-timeline-logo">
+                  <img src="{{ item.logo | prepend: '/assets/img/logos/' | relative_url }}" alt="" loading="lazy">
+                </span>
+              {% endif %}
+              <p class="cl-timeline-period">{{ item.period }}</p>
+            </div>
             <h3>{{ item.role }}</h3>
             {% if item.org %}
               <p class="cl-timeline-org">{{ item.org | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>

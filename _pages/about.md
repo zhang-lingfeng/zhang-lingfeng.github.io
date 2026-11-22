@@ -17,21 +17,26 @@ interests:
   - Vision-Language-Action (VLA) Model
 
 # "Background" cards. Markdown links work in org and note.
+# logo: a file in assets/img/logos/ (square emblems and wide wordmarks both work)
 timeline:
   - period: 2025 — now
+    logo: tsinghua.png
     role: Ph.D. Student
     org: "Tsinghua University · [SSR Group](https://ssr-group.net/)"
     note: "Supervised by [Prof. Wenbo Ding](https://ssr-group.net/) & [Prof. Xiaojun Liang](https://pcl.ac.cn/html/918/2022-04-24/content-3953.html)"
     current: true
   - period: "2025"
+    logo: hkust-gz.png
     role: M.Phil. in Microelectronics
     org: "[HKUST (Guangzhou)](https://www.hkust-gz.edu.cn/)"
     note: "Supervised by [Prof. Renjing Xu](https://facultyprofiles.hkust-gz.edu.cn/faculty-personal-page/XU-Renjing/renjingxu) & [Prof. Xinyu Chen](https://soldierchen.github.io/)"
   - period: "2024"
+    logo: baai.svg
     role: Research Intern
     org: "[BAAI](https://www.baai.ac.cn/)"
     note: "Supervised by [Dr. Xiaoshuai Hao](https://haoxiaoshuai.github.io/homepage/)"
   - period: "2023"
+    logo: bit.svg
     role: B.Eng. in Electronics Information
     org: "[Beijing Institute of Technology](https://bit.edu.cn/)"
     note: "Research intern at Tsinghua University with [Prof. Fangwen Yu](https://www.yufangwen.com/) & [Prof. Luping Shi](https://faculty.dpi.tsinghua.edu.cn/shiluping/en/index.html)"
