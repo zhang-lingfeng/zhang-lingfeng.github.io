@@ -1,89 +1,206 @@
 ---
 layout: default
 ---
-<div class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      {% if site.title == 'blank' %}
-        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
-        {{ site.last_name }}
-      {% else %}
-        {{ site.title }}
-      {% endif %}
-    </h1>
-    <p class="desc">{{ page.subtitle }}</p>
-  </header>
+{% comment %}
+  Home page. Text comes from _pages/about.md:
+  the markdown body is the intro, and the front matter feeds the
+  interests, timeline, featured, honors, news and publication sections.
+{% endcomment %}
+{% assign socials = site.data.socials %}
+{% assign name_parts = site.last_name | split: '|' %}
+{% if page.display_name %}
+  {% assign display_name = page.display_name %}
+{% else %}
+  {% assign last_part = name_parts[0] | strip %}
+  {% assign display_name = site.first_name | append: ' ' | append: last_part %}
+{% endif %}
+{% if page.display_name_zh %}
+  {% assign display_name_zh = page.display_name_zh %}
+{% elsif name_parts[1] %}
+  {% assign display_name_zh = name_parts[1] | strip %}
+{% endif %}
+{% assign portrait_alt = 'Portrait of ' | append: display_name %}
 
-  <article>
-    {% if page.profile %}
-      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
-        {% if page.profile.image %}
-          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-          {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
-      rounded' %}
-          {% endif %}
-          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
-          {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-            cache_bust=true
-          %}
+<div class="post cl-home">
+  <!-- Hero -->
+  <section class="cl-hero" id="about" aria-label="About">
+    <div class="cl-hero-text">
+      {% if page.subtitle %}
+        <p class="cl-eyebrow"><span class="cl-dot" aria-hidden="true"></span>{{ page.subtitle }}</p>
+      {% endif %}
+      <h1 class="cl-name">{{ display_name }}</h1>
+      {% if display_name_zh %}
+        <p class="cl-name-zh" lang="zh-CN">{{ display_name_zh }}</p>
+      {% endif %}
+      <div class="cl-lede">{{ content }}</div>
+      <div class="cl-actions">
+        {% if socials.email %}
+          <a class="cl-btn cl-btn-dark" href="mailto:{{ socials.email | encode_email }}">Email me</a>
         {% endif %}
+        {% if socials.scholar_userid %}
+          <a class="cl-btn cl-btn-outline" href="https://scholar.google.com/citations?user={{ socials.scholar_userid }}">
+            Google Scholar <span aria-hidden="true">↗</span>
+          </a>
+        {% endif %}
+        {% if socials.github_username %}
+          <a class="cl-btn cl-btn-outline" href="https://github.com/{{ socials.github_username }}">
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if page.profile.image %}
+      {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+      <div class="cl-portrait">
+        <span class="cl-portrait-sun" aria-hidden="true"></span>
+        <div class="cl-portrait-frame">
+          {% include figure.liquid loading="eager" path=profile_image_path alt=portrait_alt cache_bust=true %}
+        </div>
         {% if page.profile.more_info %}
           <div class="more-info">{{ page.profile.more_info }}</div>
         {% endif %}
       </div>
     {% endif %}
+  </section>
 
-    <div>{{ content }}</div>
+  <!-- Research interests -->
+  {% if page.interests %}
+    <section class="cl-interests" aria-label="Research interests">
+      <span class="cl-label">Research interests</span>
+      <ul class="cl-chips">
+        {% for interest in page.interests %}
+          <li>{{ interest }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
 
-    <div class="clearfix"></div>
+  <!-- Background -->
+  {% if page.timeline %}
+    <section class="cl-section" aria-labelledby="cl-background">
+      <div class="cl-section-head">
+        <h2 class="cl-h2" id="cl-background">Background</h2>
+      </div>
+      <div class="cl-timeline">
+        {% for item in page.timeline %}
+          <article class="cl-timeline-item{% if item.current %} is-current{% endif %}">
+            <p class="cl-timeline-period">{{ item.period }}</p>
+            <h3>{{ item.role }}</h3>
+            {% if item.org %}
+              <p class="cl-timeline-org">{{ item.org | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+            {% endif %}
+            {% if item.note %}
+              <p class="cl-timeline-note">{{ item.note | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
 
-    <!-- News -->
-    {% if page.announcements and page.announcements.enabled %}
-      <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
-      </h2>
-      {% include news.liquid limit=true %}
-    {% endif %}
+  <!-- Featured work -->
+  {% if page.featured %}
+    {% assign tints = 'oat,cactus,heather' | split: ',' %}
+    <section class="cl-section" aria-labelledby="cl-featured">
+      <div class="cl-section-head">
+        <h2 class="cl-h2" id="cl-featured">Featured work</h2>
+        <a class="cl-more" href="{{ '/publications/' | relative_url }}">All publications →</a>
+      </div>
+      <div class="cl-featured">
+        {% for paper in page.featured %}
+          {% assign tint_index = forloop.index0 | modulo: 3 %}
+          <article class="cl-feature is-{{ tints[tint_index] }}">
+            {% if paper.image %}
+              {% assign paper_image = paper.image | prepend: 'assets/img/publication_preview/' %}
+              <div class="cl-feature-media">
+                {% include figure.liquid loading="lazy" path=paper_image alt=paper.title zoomable=true %}
+              </div>
+            {% endif %}
+            <div class="cl-feature-body">
+              {% if paper.venue %}
+                <p class="cl-feature-venue">{{ paper.venue }}</p>
+              {% endif %}
+              <h3 class="cl-feature-title">
+                {% if paper.url %}
+                  <a href="{{ paper.url }}">{{ paper.title }}</a>
+                {% else %}
+                  {{ paper.title }}
+                {% endif %}
+              </h3>
+              {% if paper.authors %}
+                <p class="cl-feature-authors">{{ paper.authors }}</p>
+              {% endif %}
+              {% if paper.links %}
+                <p class="cl-feature-links">
+                  {% for link in paper.links %}
+                    <a href="{{ link.url }}">{{ link.label }} <span aria-hidden="true">↗</span></a>
+                  {% endfor %}
+                </p>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
 
-    <!-- Latest posts -->
-    {% if page.latest_posts and page.latest_posts.enabled %}
-      <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
-      </h2>
-      {% include latest_posts.liquid %}
-    {% endif %}
+  <!-- Honors -->
+  {% if page.honors %}
+    <section class="cl-section" aria-labelledby="cl-honors">
+      <div class="cl-section-head">
+        <h2 class="cl-h2" id="cl-honors">Honors</h2>
+      </div>
+      <div class="cl-honors">
+        {% for honor in page.honors %}
+          <article class="cl-honor">
+            <svg class="cl-honor-icon" viewBox="0 0 30 30" aria-hidden="true">
+              <path d="M10 17 L7 28 L15 24 L23 28 L20 17"></path>
+              <circle cx="15" cy="11" r="9"></circle>
+            </svg>
+            <div>
+              <h3>{{ honor.title }}</h3>
+              {% if honor.detail %}
+                <p>{{ honor.detail }}</p>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
 
-    <!-- Selected papers -->
-    {% if page.selected_papers %}
-      <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
-      </h2>
+  <!-- News -->
+  {% if page.announcements and page.announcements.enabled %}
+    <section class="cl-section cl-split" id="news" aria-labelledby="cl-news">
+      <div class="cl-split-head">
+        <h2 class="cl-h2" id="cl-news">News</h2>
+        <a class="cl-more" href="{{ '/news/' | relative_url }}">All news →</a>
+      </div>
+      <div class="cl-split-body">
+        {% include news.liquid limit=true %}
+      </div>
+    </section>
+  {% endif %}
+
+  <!-- Selected publications -->
+  {% if page.selected_papers %}
+    <section class="cl-section" id="publications" aria-labelledby="cl-pubs">
+      <div class="cl-section-head">
+        <div>
+          <h2 class="cl-h2" id="cl-pubs">Selected publications</h2>
+          <p class="cl-note">* co-first authors / core contributors · † corresponding author</p>
+        </div>
+        <a class="cl-more" href="{{ '/publications/' | relative_url }}">Full list →</a>
+      </div>
       {% include selected_papers.liquid %}
-    {% endif %}
+    </section>
+  {% endif %}
 
-    <!-- Social -->
-    {% if page.social %}
-      <div class="social">
-        <div class="contact-icons">{% include social.liquid %}</div>
-
-        <div class="contact-note">{{ site.contact_note }}</div>
-      </div>
-    {% endif %}
-
-    {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
-      {% include newsletter.liquid center=true %}
-    {% endif %}
-
-    <!-- Visitor Map Bottom -->
-    {% if page.profile.show_page_views %}
-      <div class="visitor-map-bottom">
-        {% include visitor_map_bottom.liquid %}
-      </div>
-    {% endif %}
-  </article>
+  <!-- Visitor map -->
+  {% if page.profile.show_page_views %}
+    <section class="cl-section cl-visitors" aria-label="Visitor map">
+      <div class="visitor-map-bottom">{% include visitor_map_bottom.liquid %}</div>
+    </section>
+  {% endif %}
 </div>

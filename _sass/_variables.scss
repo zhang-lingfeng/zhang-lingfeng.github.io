@@ -32,10 +32,44 @@ $grey-900: #212529;
 $white-color: #ffffff !default;
 $black-color: #000000 !default;
 
+// Claude-inspired palette (warm neutrals + a single clay accent)
+$ivory: #faf9f5;
+$slate: #141413;
+$clay: #d97757; // decorative accent (dots, buttons, highlights)
+$clay-deep: #b5532f; // clay dark enough for link text on ivory (4.7:1)
+$oat: #e3dacc;
+$cactus: #bcd1ca;
+$heather: #cbcadb;
+
+$warm-100: #f5f4ed;
+$warm-150: #f0eee6;
+$warm-200: #e8e6dc;
+$warm-300: #dedcd1;
+$warm-400: #b0aea5;
+$warm-600: #5e5d59;
+$warm-700: #3d3d3a;
+$warm-750: #30302e;
+$warm-800: #262624;
+$warm-850: #1f1e1d;
+
+// Fonts
+$font-sans:
+  "Instrument Sans",
+  system-ui,
+  -apple-system,
+  "Segoe UI",
+  "PingFang SC",
+  "Hiragino Sans GB",
+  "Microsoft YaHei",
+  Helvetica,
+  Arial,
+  sans-serif;
+$font-serif: "Source Serif 4", "Noto Serif SC", "Songti SC", Georgia, "Times New Roman", serif;
+
 // Theme colors
 
-$code-bg-color-light: rgba($purple-color, 0.05);
-$code-bg-color-dark: #2c3237 !default;
+$code-bg-color-light: rgba($clay, 0.08);
+$code-bg-color-dark: $warm-750;
 
 // Font awesome location
 $fa-font-path: "../webfonts";

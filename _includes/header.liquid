@@ -2,28 +2,18 @@
   <!-- Nav Bar -->
   <nav id="navbar" class="navbar navbar-light navbar-expand-sm {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}" role="navigation">
     <div class="container">
-      {% if page.permalink != '/' %}
-        <a class="navbar-brand title font-weight-lighter" href="{{ site.baseurl }}/">
-          {% if site.title == 'blank' %}
-            {% if site.first_name %}
-              <span class="font-weight-bold">
-                {{- site.first_name -}}
-              </span>
-            {% endif %}
-            {% if site.middle_name %}
-              {{- site.middle_name -}}
-            {% endif %}
-            {% if site.last_name %}
-              {{- site.last_name -}}
-            {% endif %}
-          {% else %}
-            {{- site.title -}}
+      <!-- Brand: "First Last" plus the part after "|" in last_name (e.g. the Chinese name) -->
+      {% assign name_parts = site.last_name | split: '|' %}
+      <a class="navbar-brand cl-brand" href="{{ site.baseurl }}/">
+        {% if site.title == 'blank' %}
+          <span class="cl-brand-name">{{ site.first_name }} {{ name_parts[0] | strip }}</span>
+          {% if name_parts[1] %}
+            <span class="cl-brand-zh" lang="zh-CN">{{ name_parts[1] | strip }}</span>
           {% endif %}
-        </a>
-      {% elsif site.enable_navbar_social %}
-        <!-- Social Icons -->
-        <div class="navbar-brand social">{% include social.liquid %}</div>
-      {% endif %}
+        {% else %}
+          <span class="cl-brand-name">{{ site.title }}</span>
+        {% endif %}
+      </a>
       <!-- Navbar Toggle -->
       <button
         class="navbar-toggler collapsed ml-auto"
@@ -135,6 +125,9 @@
               </button>
             </li>
           {% endif %}
+          <li class="nav-item cl-nav-cta">
+            <a class="cl-btn cl-btn-dark" href="#contact">Get in touch</a>
+          </li>
         </ul>
       </div>
     </div>

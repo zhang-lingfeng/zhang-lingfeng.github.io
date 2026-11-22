@@ -1,30 +1,43 @@
-{% capture footer_contents %}
-  &copy; Copyright {{ site.time | date: '%Y' }}
-  {{ site.first_name }}
-  {{ site.middle_name }}
-  {{ site.last_name }}. {{ site.footer_text }}
-  {% if site.impressum_path %}
-    <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>.
-  {% endif %}
-  {% if site.last_updated %}
-    Last updated: {{ 'now' | date: '%B %d, %Y' }}.
-  {% endif %}
-{% endcapture %}
-
-{% if site.footer_fixed %}
-  <footer class="fixed-bottom" role="contentinfo">
-    <div class="container mt-0">
-      {{ footer_contents }}
-    </div>
-  </footer>
-{% else %}
-  <footer class="sticky-bottom mt-5" role="contentinfo">
-    {% if site.newsletter.enabled %}
-      {% include newsletter.liquid %}
+{% assign name_parts = site.last_name | split: '|' %}
+{% assign socials = site.data.socials %}
+<footer class="cl-footer" id="contact" role="contentinfo">
+  <div class="container">
+    {% if site.contact_note and site.contact_note != '' %}
+      <p class="cl-footer-cta">{{ site.contact_note | strip }}</p>
     {% endif %}
 
-    <div class="container">
-      {{ footer_contents }}
+    <div class="cl-footer-actions">
+      {% if socials.email %}
+        <a class="cl-btn cl-btn-accent" href="mailto:{{ socials.email | encode_email }}">Email me</a>
+      {% endif %}
+      {% if socials.scholar_userid %}
+        <a class="cl-btn cl-btn-ghost-inverse" href="https://scholar.google.com/citations?user={{ socials.scholar_userid }}">
+          Google Scholar <span aria-hidden="true">↗</span>
+        </a>
+      {% endif %}
+      {% if socials.github_username %}
+        <a class="cl-btn cl-btn-ghost-inverse" href="https://github.com/{{ socials.github_username }}">
+          GitHub <span aria-hidden="true">↗</span>
+        </a>
+      {% endif %}
     </div>
-  </footer>
-{% endif %}
+
+    <div class="cl-footer-bottom">
+      <span>
+        &copy; {{ site.time | date: '%Y' }}
+        {{ site.first_name }}
+        {{ name_parts[0] | strip -}}
+        {%- if name_parts[1] %} · <span lang="zh-CN">{{ name_parts[1] | strip }}</span>{% endif %}
+      </span>
+      <span>
+        {{ site.footer_text }}
+        {% if site.impressum_path %}
+          <a href="{{ site.impressum_path | relative_url }}">Impressum</a>
+        {% endif %}
+        {% if site.last_updated %}
+          Last updated: {{ 'now' | date: '%B %d, %Y' }}.
+        {% endif %}
+      </span>
+    </div>
+  </div>
+</footer>

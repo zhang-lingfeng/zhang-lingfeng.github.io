@@ -2,38 +2,89 @@
 layout: about
 title: About
 permalink: /
-subtitle: <a href='#'>Tsinghua University</a> Ph.D. Student.
+subtitle: Ph.D. Student · Tsinghua University · SSR Group
 
 profile:
-  align: right
   image: zlf.png
-  image_circular: false # crops the image to make it circular
-  show_page_views: true # show page views counter below profile image
+  show_page_views: true # shows the visitor map at the bottom of the page
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+# Chips under the intro
+interests:
+  - Embodied Intelligence
+  - Embodied Foundation Model
+  - Embodied Navigation
+  - Embodied Manipulation
+  - Vision-Language-Action (VLA) Model
+
+# "Background" cards. Markdown links work in org and note.
+timeline:
+  - period: 2025 — now
+    role: Ph.D. Student
+    org: "Tsinghua University · [SSR Group](https://ssr-group.net/)"
+    note: "Supervised by [Prof. Wenbo Ding](https://ssr-group.net/) & [Prof. Xiaojun Liang](https://pcl.ac.cn/html/918/2022-04-24/content-3953.html)"
+    current: true
+  - period: "2025"
+    role: M.Phil. in Microelectronics
+    org: "[HKUST (Guangzhou)](https://www.hkust-gz.edu.cn/)"
+    note: "Supervised by [Prof. Renjing Xu](https://facultyprofiles.hkust-gz.edu.cn/faculty-personal-page/XU-Renjing/renjingxu) & [Prof. Xinyu Chen](https://soldierchen.github.io/)"
+  - period: "2024"
+    role: Research Intern
+    org: "[BAAI](https://www.baai.ac.cn/)"
+    note: "Supervised by [Dr. Xiaoshuai Hao](https://haoxiaoshuai.github.io/homepage/)"
+  - period: "2023"
+    role: B.Eng. in Electronics Information
+    org: "[Beijing Institute of Technology](https://bit.edu.cn/)"
+    note: "Research intern at Tsinghua University with [Prof. Fangwen Yu](https://www.yufangwen.com/) & [Prof. Luping Shi](https://faculty.dpi.tsinghua.edu.cn/shiluping/en/index.html)"
+
+# Large cards under "Featured work"; images live in assets/img/publication_preview/
+featured:
+  - title: "Walk With Me: Long-Horizon Social Navigation for Human-Centric Outdoor Assistance"
+    venue: Preprint · 2026
+    image: walk_with_me.png
+    url: https://linglingxiansen.github.io/Walk-with-Me/
+    authors: "<strong>Lingfeng Zhang</strong>, Xiaoshuai Hao, Xizhou Bu, Yingbo Tang, … , Wenbo Ding"
+    links:
+      - label: arXiv
+        url: https://arxiv.org/abs/2604.26839
+      - label: Website
+        url: https://linglingxiansen.github.io/Walk-with-Me/
+  - title: "Is your VLM Sky-Ready? A Comprehensive Spatial Intelligence Benchmark for UAV Navigation"
+    venue: CVPR 2026
+    image: sky.png
+    url: https://arxiv.org/abs/2511.13269
+    authors: "<strong>Lingfeng Zhang*</strong>, Yuchen Zhang*, Hongsheng Li, … , Wenbo Ding†"
+    links:
+      - label: arXiv
+        url: https://arxiv.org/abs/2511.13269
+      - label: Code
+        url: https://github.com/linglingxiansen/SpatialSKy
+  - title: "MiMo-Embodied: X-Embodied Foundation Model Technical Report"
+    venue: Technical Report · 2025
+    image: mimo.png
+    url: https://arxiv.org/abs/2511.16518
+    authors: "Xiaoshuai Hao*, Lei Zhou*, Zhijian Huang*, … , <strong>Lingfeng Zhang*</strong>, …"
+    links:
+      - label: arXiv
+        url: https://arxiv.org/abs/2511.16518
+      - label: Code
+        url: https://github.com/XiaomiMiMo/MiMo-Embodied
+
+honors:
+  - title: Best Paper & Best Poster Award
+    detail: IROS 2025 RoDGE Workshop · RoboAfford++
+  - title: Best Student Paper Award
+    detail: IJCAI Workshop on Deepfake Detection, Localization and Interpretability
+  - title: 2nd & 3rd Place
+    detail: IROS 2025 RoboSense Challenge · Social Navigation, Cross-Modal Drone Navigation
+  - title: 3rd Place
+    detail: ICCV EVQA-SnapUGC Challenge · best single-modality performance
+
+selected_papers: true # lists papers marked selected={true} in _bibliography/papers.bib
 
 announcements:
-  enabled: true # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: # leave blank to include all the news in the `_news` folder
+  enabled: true # shows the latest news items
+  scrollable: false # adds a scroll box instead of listing all items
+  limit: 8 # leave blank to show every item in _news
 ---
 
-Welcome to my homepage! 👋
-
-I am currently a first year **<a href='#'>Ph.D. student</a> at Tsinghua University**, Guangdong, in the **[SSR group](https://ssr-group.net/)** (supervised by **[Prof. Wenbo Ding](https://ssr-group.net/)** and **[Prof. Xiaojun Liang](https://pcl.ac.cn/html/918/2022-04-24/content-3953.html)**).  
-My current research focuses on embodied intelligence and MLLMs, with a special emphasis on embodied navigation and embodied foundation models.
-
-Before joining Tsinghua University, I received my M.Phil. in Microelectronics in 2025 from [The Hong Kong University of Science and Technology (Guangzhou)](https://www.hkust-gz.edu.cn/), supervised by **[Prof. Renjing Xu](https://facultyprofiles.hkust-gz.edu.cn/faculty-personal-page/XU-Renjing/renjingxu)** and **[Prof. Xinyu Chen](https://soldierchen.github.io/)**. I obtained my B.Eng. in Electronics Information in 2023 from [Beijing Institute of Technology](https://bit.edu.cn/), and conducted a research internship in 2023 at the Tsinghua University, under the supervision of **[Prof. Fangwen Yu](https://www.yufangwen.com/)** and **[Prof. Luping Shi](https://faculty.dpi.tsinghua.edu.cn/shiluping/en/index.html)**. 
-I was also a research intern at [BAAI](https://www.baai.ac.cn/), supervised by **[Dr. Xiaoshuai Hao](https://haoxiaoshuai.github.io/homepage/)**.
-<!-- I was also a research intern at [BAAI](https://www.baai.ac.cn/) and [Xiaomi EV](https://www.xiaomiev.com/), supervised by **[Dr. Xiaoshuai Hao](https://haoxiaoshuai.github.io/homepage/)** and **[Dr. Long Chen](https://long.ooo/)**. -->
-
-My research interests include:
-
-- Embodied Intelligence
-- Embodied Foundation Model
-- Embodied Navigation
-- Embodied Manipulation
-- Vision-Language-Action (VLA) Model
-
-<span style="background-color: #FFEB3B; font-weight: bold; font-style: italic; color:#2196F3;">I am always open to discussions and collaborations — feel free to [reach out](mailto:lfzhang715@gmail.com)!</span>
+I am currently a first-year Ph.D. student at **Tsinghua University**, Guangdong, in the [SSR group](https://ssr-group.net/), supervised by [Prof. Wenbo Ding](https://ssr-group.net/) and [Prof. Xiaojun Liang](https://pcl.ac.cn/html/918/2022-04-24/content-3953.html). My current research focuses on embodied intelligence and MLLMs, with a special emphasis on embodied navigation and embodied foundation models.
