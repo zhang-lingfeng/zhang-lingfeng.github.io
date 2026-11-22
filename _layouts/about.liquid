@@ -91,9 +91,11 @@ layout: default
                   <img src="{{ item.logo | prepend: '/assets/img/logos/' | relative_url }}" alt="" loading="lazy">
                 </span>
               {% endif %}
-              <p class="cl-timeline-period">{{ item.period }}</p>
+              <div class="cl-timeline-heading">
+                <p class="cl-timeline-period">{{ item.period }}</p>
+                <h3>{{ item.role }}</h3>
+              </div>
             </div>
-            <h3>{{ item.role }}</h3>
             {% if item.org %}
               <p class="cl-timeline-org">{{ item.org | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
             {% endif %}

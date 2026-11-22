@@ -26,7 +26,7 @@ timeline:
     note: "Supervised by [Prof. Wenbo Ding](https://ssr-group.net/) & [Prof. Xiaojun Liang](https://pcl.ac.cn/html/918/2022-04-24/content-3953.html)"
     current: true
   - period: "2025"
-    logo: hkust-gz.png
+    logo: hkust-gz-emblem.png
     role: M.Phil. in Microelectronics
     org: "[HKUST (Guangzhou)](https://www.hkust-gz.edu.cn/)"
     note: "Supervised by [Prof. Renjing Xu](https://facultyprofiles.hkust-gz.edu.cn/faculty-personal-page/XU-Renjing/renjingxu) & [Prof. Xinyu Chen](https://soldierchen.github.io/)"
