@@ -792,10 +792,11 @@ body.fixed-top-nav {
 
 /* Background timeline */
 
+// Three columns on desktop (six items -> two rows), two on tablets, one on phones.
 .cl-timeline {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 2.5rem 1.75rem;
 
   a {
     color: inherit;

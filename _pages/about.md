@@ -25,6 +25,13 @@ timeline:
     org: "Tsinghua University · [SSR Group](https://ssr-group.net/)"
     note: "Supervised by [Prof. Wenbo Ding](https://ssr-group.net/) & [Prof. Xiaojun Liang](https://pcl.ac.cn/html/918/2022-04-24/content-3953.html)"
     current: true
+  - period: Sep 2026 — now
+    role: Research Intern
+    org: Meituan · LongCat Team
+    current: true
+  - period: Sep 2025 — Aug 2026
+    role: Research Intern
+    org: Xiaomi Robotics
   - period: "2025"
     logo: hkust-gz-emblem.png
     role: M.Phil. in Microelectronics
